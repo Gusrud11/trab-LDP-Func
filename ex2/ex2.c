@@ -1,58 +1,60 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int depo(){
-    printf("Digite o valor do deposito: \n");
-    int deposito=0, saldo=0;
-    scanf("%d", &deposito);
+float saldo = 0.0;
 
-    int saldo() = saldo + deposito;
-    return saldo;
+void verificarSaldo() {
+    printf("Seu saldo atual é: R$ %.2f\n", saldo);
 }
 
-int saque(){
-    
-        printf("Digite o valor do saque: \n");
-        int valor_saque=0, saldo=0;
-        scanf("%d", &valor_saque);
-        int saldo() = saldo - valor_saque;
-
-        return saldo;
-
+void realizarDeposito(float valor) {
+    saldo += valor;
+    printf("Depósito de R$ %.2f realizado com sucesso!\n", valor);
 }
 
-int saldo(){
-    int saldo=0;
-    printf("seu saldo é %d", saldo);
-    return saldo;
+void realizarSaque(float valor) {
+    if (valor > saldo) {
+        printf("Saldo insuficiente para realizar o saque!\n");
+    } else {
+        saldo -= valor;
+        printf("Saque de R$ %.2f realizado com sucesso!\n", valor);
+    }
 }
 
-int main(){
-    int op;
-    do{
-        printf("\n1 - Saldo\n");
-        printf("\n2 - Deposito\n");
-        printf("\n3 - Saque\n");
-        printf("\n4 - Sair\n");
-        scanf("%d", &op);
-        switch(op){
+int main() {
+    int opcao;
+    float valor;
+
+    do {
+        printf("1. Verificar saldo\n");
+        printf("2. Realizar depósito\n");
+        printf("3. Realizar saque\n");
+        printf("4. Sair\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
             case 1:
-                saldo();
+                verificarSaldo();
                 break;
             case 2:
-                depo();
+                printf("Digite o valor do depósito: ");
+                scanf("%f", &valor);
+                realizarDeposito(valor);
                 break;
             case 3:
-                saque();
+                printf("Digite o valor do saque: ");
+                scanf("%f", &valor);
+                realizarSaque(valor);
                 break;
             case 4:
-                printf("Saindo...\n");
+                printf("Saindo..\n");
                 break;
             default:
-                printf("Opcao invalida\n");
+                printf("Opção inválida!\n");
                 break;
         }
-    }while(op != 4);
-    return 0;
+    } while (opcao != 4);
 
+    return 0;
 }

@@ -1,0 +1,1 @@
+Procedimento é um bloco de código que executa uma sequência de instruções, mas não retorna um valor específico, esta utiliza o tipo "void". uma função, por outro lado, é um bloco de código que executa uma sequência de instruções e retorna um valor específico, já esta utiliza o tipo "int."
